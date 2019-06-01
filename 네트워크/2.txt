@@ -1,0 +1,66 @@
+5강 입셉션)
+
+서블릿에선 자바를 주로사용하니 try catch이용하고 catch 부분에선 해당 입셉션과, RequestDispatcher dispatcher = request.getRequestDispatcher( ) 를 가져와서 forward하는 식으로 하자.
+throw new Exception("str");
+그럼 jsp에선?
+<%@ page errorPage="DataError.jsp" %> =>에러 발생하면 이페이지로 가라. 이런뜻 ^^
+그럼 해당 에러페이지로 가면 이 문구를 추가해줘야 한다. <%@ page isErrorPage="true" %>
+<%= exception.getMessage( ) %> 그런데... 내가 만든 에러페이지가 아닌 웹브라우저 자체 에러 메시지가 뜬다.. ㅠㅠ 그럼?
+<% response.setStatus(200) %>로 바꿔주자 500 -> 200
+
+서블릿->서블릿에러 페이지를 가기위한 내용은 간단함. catch문장에서 dispatcher만든다음에 맵핑한 이름을 넣는다. 그러면 에러가 발생하면 자동적으로 맵핑된 이름을 가진 서블릿파일이 열림.
+
+web.xml 에서 예외페이지 등록. //공용으로 사용가능 // 
+<error-page>
+	<exception-type>java.lang.NumberException</exception-type>
+	<location>/NumberFormatError.jsp</location>
+</error-page>
+그러나 errorPage를 등록했다면 errorPage가 우선권을 갖는다.
+서블릿에서 try catch를 안한 상태에 입셉션이 발생하면 jvm으로 던져져서 처리하는데 여기서 web.xml를 참조하여 해당 입셉션에 관련된 페이지가 있다면 예외 페이지를 보여준다.
+
+오류페이지 등록
+<error-page>
+	<error-code>404</error-code>
+	<location>/NotFoundError.jsp</location>
+</error-page>
+
+6강 서블릿 라이프 사이클)
+서블릿을 만들고 삭제할 때 바로 disCard하는게 아니라 일단 저장해둠..
+	init, destory, jspInit, jspDestory
+서블릿 클래스의 init메서드는 서블릿의 초기화 작업시 수행될 때 자동으로 호출되는 메서드임. destory는 서블릿의 마무리 작업이 수행될 때 자동으로 호출되는 메서드임.
+
+서블릿의 초기화 파라미터는 서블릿의 초기화 작업에 필요한 데이터를 의미합니다.
+String fileName = getInitParameter("FILE_NAME"); //파일네임이라는 초기화파라미터 데이터의 값을 가져옵니다.
+<init-param>
+	<param-name>FILE_NAME</param-name>
+	<param-value>agreement.txt</param-value> 이런식
+</init-param>
+ServletConfig config = getServletConfig( );
+String fileName = config.getInitParameter("FILE_NAME");  
+
+jspInit( ), jspDestory도 비슷함.
+추가 할점 : PrintWriter writer = PrintWriter(new FileWriter(fileName,true)); GregorianCalendar now = new .. -> String.format("TY" "Tm" "Te", now,now,now);
+
+jsp 초기화 파라미터 : 
+<servlet> 
+	<servlet-name>....
+	<jsp-file>/jspFile.jsp</jsp-file> // 이것만다름 class-name이아님 ㅇㅇ
+</servlet>
+.. <url-pattern>.. 이하 동문..
+config 내장변수 : config.getInitParameter(..);
+
+서블릿 환경을 표현하는 ServletContext 객체
+ServeltContext context = getServletContext();
+String str = context.getServerInfo ( );
+int num1 = context.getMajorVersion( ); , context.getMinorVersion(); // 서블릿에선이렇게쓰고
+
+application.getServerInfo() getMajorInfo, getMinorInfo() // jsp에선이렇게씀 
+application.log("message");
+초기화 파라미터:
+<context-param> 
+	<param-name>...
+	<param-value> ...
+</context-param>
+또한 세션이랑 비슷하게 getAttribute , setAttribute, removeAttribute()랑 비슷하나 데이터가 저장되는 영역이 다릅니다.
+application. getContextPath(), getRealPath ( ) 쓸수잇당. // 3장 내장변수에서 함.
+(session은 같은 session 에 속하는 웹 컴포넌트// context는 같은 웹 어플리케이션 속하는 모든 웹 컴포넌트

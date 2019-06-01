@@ -1,0 +1,31 @@
+오늘한거.. 
+네트워크 8강함.
+
+ipv6 헤더구조 : ver/ ds.ecn / flow label / payload /next header/ hop limit / s/d addresss each 16byte
+
+ipv6 주소표현 
+16진수 ,맨앞 0생략 . 0이 여러번 나온 여러 콜론생략 단 1번만가능 
+루프백 ::1/128 ,, 미지정주소 ::/128 ::ffff:0:0/96dms ::에 96개의 프레픽스(선두 상위비트 집합) ipv4-> ipv6 매핑
+로컬 127.0.0.1 1110 1110 1000 = fe80
+ipv6는 멀티, 애니 , 유니 캐스트
+
+터널링
+홈에이전트 -> 외부에이전트 coa 할당 -> prefix 부여 모바일호스트에게 (포워딩 -> s/d) 입/딥캘슐레이션 tcp에서 ack/nack 
+트라이앵글 라우팅 프라블럼 -> c.h 계속갱신 (바인딩 업데이트)
+액세스 포인터 wifi full connecting x -> accessPointer가지만 연결
+
+기타 네트워크 계층 프로토콜
+
+ARP RARP ICMP IGMP 
+ARP 송신호스트의 맥주소를 알기위해 IP주소를 매개변수로 넘겨주다.
+RARP ARP 반대
+ICMP는 패킷을 보냈는데 문제가 발생하면 원인을 송신호스트에게 줌
+오류보고 메시지)
+1. DESTINATION UNRECHABLE : 목적지 못찾음 -> 디스카드
+2. SOURCE QUENCH : 공간이 없어 TRAFFIC 폭발, 흐름제어 역할
+3. TIME EXCEEDED : HOP LIMIT 역할 시간경과.
+질의 메시지)
+1. ECHO REQUEST/REPLY : 신뢰성 확인(핑)
+2. TIMESTAMP RQ/RY : 두호스트간의 네트워크 지연계산 타임스탬프란? 특정시각에서 걸린 시간의 경과를 나타낸 문자열.
+IGMP
+멀티캐스트 그룹가입하거나 탈퇴시 사용하는 프로토콜.->그룹관리내용.

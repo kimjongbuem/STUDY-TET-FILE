@@ -1,0 +1,9 @@
+원격 서버 접속 명령어 : ssh -i 
+윈도우 putty, cigwin
+
+ssh -i FirstTestAWS.pem ubuntu@ec2-52-78-25-124.ap-northeast-2.compute.amazonaws.com->
+서버 접속하고 계정만든다 (sudo adduser name)
+cd /home - > cd name -> sudo visudo로 ㄱㄱ
+추가한계정에 루트 권한이 필요하니.. ubuntu sudoer를 추가하자! // sudo 권한부여..
+name .... 
+ssh -i FirstTestAWS.pem name@ec2-52-78-25-124.ap-northeast-2.compute.amazonaws.com 

@@ -1,0 +1,93 @@
+7강 익스프레션
+request.getAttribute("RESULT") -> $ {RESULT} 대괄호안에 여러 java.long.math 클래스의 이용(m:sqrt(100}} 과 사칙연산 가능 
+EL 식 안에 있는 데이터 이름이 해석되는 순서
+${ pageScope.sum ,   requestScope.RESULT, sessionScope.CART,  application.DB_NAME } 이런식으로..
+${param.NUM} == ${param["NUM"] } param은 form 엘리먼트를 통해 입력된 데이터를 가져올 때 사용하는 내장객체임.
+근데 많은 데이터가 온다면?? ${paramValues.ANIMAL[0]} == ${paramValues["ANIMAL"][1]}  -> NAME이 ANIMAL인경우..
+Header 내장객체는 http 요청 메시지에 포함된 http헤더 값을 가져올 때 사용하는 내장 객체
+이 객체를 이용해서 HTTP 헤더 값을 가져 오는 방법은 2가지 => ${header.Host}, ${header["User-Agent"]} http 헤더이름.
+그러나 첫번째는 제약사항이 있는데 자바의 문법에 어긋나면 못씀 그래서 2번째꺼를 써야함.
+그리고 http 헤더가 2개 이상인경우, headerValues를 쓰자. 
+${headerValues.Accept[0]} , ${headerValues["user-data"][2]} 
+cookie 내장객체
+${cookie.CART} ${cookie["user_name"]} 근데 이건 쿠키객체 를 가져오는 것이니. 뒤에 value를 붙여준다. ex) ${cookie.CART.value} 여기서 여러개 쓸수 있는 문장.
+cookie.CART["value"], cookie["CART"]["value"] cookie["CART"].value ㅇㅇ
+${initParam.DB_NAME} DB_NAME 대괄호도 가능.. <- web.xml에서
+<context-param>
+	<param-name>DB_NAME</param-name>
+	<param-value>malldb</param-value>
+</context-param> 
+${pageContext.request.requestURL} : URL 메서드의 리턴값을 가져오는 단어. // 익스프레션연산자의 경우 ..
+
+   X = ${param.NUM1}, Y = ${param.NUM2}<BR><BR>
+   X + Y = ${param.NUM1 + param.NUM2}<BR>
+   X - Y = ${param.NUM1 - param.NUM2 }<BR>
+   X * Y = ${param.NUM1 * param.NUM2 }<BR>
+   X / Y = ${param.NUM1 / param.NUM2 }<BR>
+   X가 더큽니까? ${param.NUM1 - param.NUM2> 0}<BR>
+   Y가 더큽니까? ${param.NUM1 - param.NUM2 < 0}<BR>
+   X와 Y가 둘다 양수 입니까? ${param.NUM1 >0 && param.NUM2 >0 }<br><br>
+   X와 Y가 같습니까? ${param.NUM1 == param.NUM2? "예":"아니오" }<BR><BR>
+   추가 연산자 : div, mod, gt, and lt 등등 이건 참고하슈. 또한 String 객체끼리 비교할 때 사전편찬순으로 비교함.
+
+${empty param.ID ? "GUEST" : param.ID }님 이런식으로 param.ID가 비워있으면 GUEST를 보여줌.
+
+배열이나 컬렉션 프레임워크또한 EL식이 가능합니다.( 맵또한 다를게없다..)
+request.setAttribute("WINNERS", winners) ; -> ${WINNERS[0] } 
+
+자바빈 set get뒤에 있는 프로퍼티만 따와서(소문자로..) 호출하면 해당 자바빈 함수와 매칭되어 보여준다~
+
+정적메서드 호출하기.
+<taglib xmlns="http://java.sun.com/xml/ns/javaee" version="2.1"> //TLD
+   <tlib-version>1.0</tlib-version>
+   <short-name>math</short-name>
+   <function>
+      <name>squareroot</name>
+      <function-class>java.lang.math</function-class>
+      <function-signature>double sqrt(double)</function-signature>
+   </fuction>
+</taglib>
+
+xml
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
+   <taglib>
+      <taglib-uri>http://hanb.co.kr/brain07/math-functions.tld</taglib-uri>
+      <taglib-location>WEB-INF/tlds/math-functions.tld</taglib-location>
+   </taglib>
+</web-app>
+<%@taglib prefix = "m" uri="http:~~~~~~~/sfds.tld" %>
+${m:squareeroot(param.NUM)}
+
+
+
+8강 표준액션
+익스프레션으론 뭔가 부족해! xml을 이용한, jsp확장 메커니즘!
+표준액션 / 커스텀액션
+<jsp:include page=".jsp"/> // 물론 상대경로도 가능해여,, <jsp:forward page=".jsp"/>
+<jsp:useBean class="mall.fgfddf" id="obj" /> + scope="request" // 스코프의 경우 범위지정을 해준당!!
+<jsp:setProperty name="obj" property="age" value="27" /> //  < jsp:getProperty name="obj" property="age" />
+
+상수값이 아닌,입력된 데이터로 가즈아!
+value="${param.AGE}" ,, param="AGE" ,, property="*"  
+상속도 더 ^^
+
+애플릿)
+<jsp:plugin type="applet" code="HelloJavaApplet.class" width="200", height="100" />// 여긴 잘 안되서 나중에 ㄱㄱ
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

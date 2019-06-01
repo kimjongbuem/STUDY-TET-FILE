@@ -1,0 +1,179 @@
+<servlet>
+      <servlet-name>ServletTest</servlet-name>
+      <servlet-class>one.HundredServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>ServletTest</servlet-name>
+      <url-pattern>/hi</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+      <servlet-name>adder-servlet</servlet-name>
+      <servlet-class>one.AdderResult</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>adder-servlet</servlet-name>
+      <url-pattern>/adder</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+      <servlet-name>bbs-servlet</servlet-name>
+      <servlet-class>one.BBS_Result</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>bbs-servlet</servlet-name>
+      <url-pattern>/BBS_Result</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+      <servlet-name>personal-servlet</servlet-name>
+      <servlet-class>one.PersonalInfo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>personal-servlet</servlet-name>
+      <url-pattern>/pinfo-Result</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+      <servlet-name>fido-servlet</servlet-name>
+      <servlet-class>one.FidoNachiServletClass</servlet-class>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>fido-servlet</servlet-name>
+      <url-pattern>/fido-Result</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+	<servlet-name>personalityTest-servlet</servlet-name>
+	<servlet-class>one.PTest</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>personalityTest-servlet</servlet-name>
+	<url-pattern>/testResults</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>Animal-servlet</servlet-name>
+	<servlet-class>AnimalServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>Animal-servlet</servlet-name>
+	<url-pattern>/Animal</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>ResultPersonality-servlet</servlet-name>
+	<servlet-class>ResultServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>ResultPersonality-servlet</servlet-name>
+	<url-pattern>/Result</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>adder-servlet</servlet-name>
+	<servlet-class>NewAdderServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>adder-servlet</servlet-name>
+	<url-pattern>/adder</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+	<servlet-name>fibonacci-servlet</servlet-name>
+	<servlet-class>FibonacciServlet</servlet-class>
+	<load-on-startup/>
+</servlet>
+<servlet-mapping>
+	<servlet-name>fibonacci-servlet</servlet-name>
+	<url-pattern>/fibonacci</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>error-servlet</servlet-name>
+	<servlet-class>DataErrorServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>error-servlet</servlet-name>
+	<url-pattern>/data-error</url-pattern>
+</servlet-mapping>
+<error-page>
+	<exception-type>java.lang.NumberFormatException</exception-type>
+	<location>/NumberFormatError.jsp</location>
+</error-page>
+
+<servlet>
+      <servlet-name>agree-servlet</servlet-name>
+      <servlet-class>studys.AgreementServlet</servlet-class>
+	<init-param>
+		<param-name>FILE_NAME</param-name>
+		<param-value>./aggrement.txt</param-value>
+	</init-param>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>agree-servlet</servlet-name>
+      <url-pattern>/agree</url-pattern>
+  </servlet-mapping>
+
+<servlet>
+      <servlet-name>greeting-servlet</servlet-name>
+      <servlet-class>studys.GreetingServlet</servlet-class>
+	<init-param>
+		<param-name>FILE_NAME</param-name>
+		<param-value>./melon.txt</param-value>
+	</init-param>
+  </servlet>
+  <servlet-mapping>
+      <servlet-name>greeting-servlet</servlet-name>
+      <url-pattern>/greeting</url-pattern>
+  </servlet-mapping>
+
+	<servlet>
+		<servlet-name>My01</servlet-name>
+		<servlet-class>studys.Round14_01_Servlet</servlet-class>
+		<init-param>
+			<param-name>start</param-name>
+			<param-value>1</param-value>
+		</init-param>
+		<init-param>
+			<param-name>end</param-name>
+			<param-value>10</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<servlet-name>My01</servlet-name>
+		<servlet-class>studys.Round14_01_Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+     		 <servlet-name>My01</servlet-name>
+    		  <url-pattern>/test</url-pattern>
+	  </servlet-mapping>
+<servlet>
+	<servlet-name>DBName-jsp</servlet-name>
+	<jsp-file>/DBName.jsp</jsp-file>
+	<init-param>
+			<param-name>DB_NAME</param-name>
+			<param-value>malldb</param-value>
+	</init-param>
+</servlet>
+<servlet-mapping>
+     		 <servlet-name>DBName-jsp</servlet-name>
+    		 <url-pattern>/dbname</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>serverInfo</servlet-name>
+	<servlet-class>ServerInfoServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+	<servlet-name>serverInfo</servlet-name>
+	<url-pattern>/serverinfo</url-pattern>
+</servlet-mapping>
+
+<context-param>
+	<param-name>DB_NAME</param-name>
+	<param-value>bankdb</param-value>
+</context-param>
+
+//그동안해왓던것들..
