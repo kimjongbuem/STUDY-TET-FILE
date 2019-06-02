@@ -1,0 +1,27 @@
+today..
+네트워크 8강 정리. ipv6 헤더구조 및 변형, ㅌ터널링 , 각종 프로토콜
+
+db는 주장과 권한 내용읽어봤고 3강 정리 4강에서 외부/내부조인 복습 
+
+jsp 10강 커스텀액션만드는거 함.근데 좀어렵네;
+?? .tag
+<%@tag body-content="empty"%> 몸체빔 ㅇ
+tag파일만들고 그것을 jsp에  taglib적용 하여 tagdir 경로 설정.
+그리고 태그파일도 내장변수를 쓸수 있음. out, request 등등
+그러니까 약간 jsp파일느낌이긴한데 절대아님.
+그리고 속성쓸라면 <%@ attribute name ="해당 속성값이름" type은 디폴트론 스트링 다른 거할라면 java에서 지정하는 타입객체나 변수지정)
+
+근데 애트리뷰트 선언귀찮아.. 그럼 동적으로 하고싶네?
+<%@tag dynamic -attribute ="name" %>
+name. <<jsp에서 해당 정의한 커스텀액션 태그의 속성값>>을 넣는다.
+이것은 Map 객체에 넣어지기에 get 메서드를 호출하여 가져옴
+<%@tag body-content="scriptless"%> 몸체에 심자ㅃ
+
+변수도 지원한다. ㅎㅎ
+변수를 지원하는 커스텀액션
+왜함? 만약에 jsp파일에서 호출한 2개의 변수를 커스텀액션에서 연산하고 jsp에게 보내고싶은경우가 있을수 있다. 즉 태그파일쪽에서 변수를 주고싶을 때사용...
+<%@ variable name-given =" result" %> 변수의 이름 설정하며 기본적으로 String 타입
+<%@ variable name-given="result" variable-class="java.lang.Integer"  scope="AT_END"%> // 변수의 타입 설정.. Scope를 통해 AT_BEGIN , END는 각각 커스텀액션 시작과 끝에서 변수사용시작의미.
+얘는 일반적 자바 변수가 아니기에.. <c:set var="result" value="100" /> 이런식으로 jstl를 이용하여 값 대입하자. 그다음 값 가져올때 el식인 ${result} 로..
+
+반복문도 태그 파일안에 넣으면 가능혀!
