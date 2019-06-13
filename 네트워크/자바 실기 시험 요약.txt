@@ -1,0 +1,28 @@
+8강 그래픽 프로그래밍 
+JFrame 사용 . setSize, setTitle, setDefaultCloseOper.. 얘는 x 누르면 종료되게해줌.
+Jcomponet를 상속받는 클래스를 만들고 paintComponent(Graphics g) 함수에다가 그림 ex) g.draw(10,20,200,150);
+frame.add( Jcomponent를 상속받는 클래스 객체) !
+선 drawLine, 사각형 drawRect, fillRect draw/fillRoundRect 3drect도있음 원 : draw/fillOval  호 : draw/fillArc 
+다각형 : Polygon p = new Polygon(); p.addPoint(x,y) add  add 후 g.drawPolygon(p); 배열을 통해 좌표 값 넣어도됨. xPnt, yPnt는 좌표값 배열들 . drawPolygon(xPnts, yPnts, xPnts.length);
+색과 폰트
+g.setColor ( new color () )  Color,  Font fp = new Font("fontName", Font.PLAIN, 17) g.setFont(fp); 이렇게~
+이미지 그리기
+Image img = ImageIO.read("imgName"); g.drawImage(img,x,y,null); 여러 좌표시스템은 책참고
+응용 
+한번 java 타이머 만드는거보자
+
+12강 gui
+알아서해라 싀발
+
+9강 예외와 단정 처리
+Throwable 최상단 UserExceptionClass extends Exception. 
+throw new Exception name! try catch finally 
+예외던지기 ~ 
+단정 : assert <조건식> [:<문자열정보>];
+
+10강 스레드  
+Thread 클래스 상속하는 클래스 run()메서드가 정의 super(name) -> getName() // Runnable Interface 
+Runnable은 작업을 정의 하며, Thread t = new Thread(r); 이런식이며 Thread 상속 클래스는 ThreadNew t = new ThreadNew t(); 
+각각 t.start(); // sleep, wait 은 스레드 상태변이 .. notifyAll() notify() // isAlive()
+setProperty getProperty => thread 우선순위. sleep, vield() -> 대기와 양보
+동기화synchronized 

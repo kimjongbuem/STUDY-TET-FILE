@@ -1,0 +1,105 @@
+데이터베이스 4강
+
+1) 조인식
+조인조건 where stduent.id = tasks.id  == from student join takes on stduent.id = tasks.id  ==  from student join takes using(id) 와 같다. 이것이 natural join인데.. 해당 mssql에선 안되는 쿼리문
+
+외부조인/내부조인
+
+외부조인
+외부조인은 하나라도 null이들어가면 출력이 안되는 상황을 타파하기 위한 조인식이다. 즉 null에 의해서 빠질수 있는 투플이 빠지는 것을 방지함.
+왼/오른/전체 외부조인
+from student natural left outer join tasks; 이렇게 하고 왼쪽과 오른쪽의 투플 방향이 달라질뿐이다. 전체외부조인은 null이 왼쪽에도 오른쪽에도 있을수있당.
+내부조인
+select* from student inner join takes on takes.ID = student.ID
+
+2)뷰
+모든 사용자가 전체 논리적 모델을 보는건 조금 위험하다. 그러니. 뷰를 통해 권한을 제한해보자.
+한번만 만들수 있고, 여러번 뷰를 쓸수있다.
+create view view_name(select 되어진 속성들의 이름 전부 지정 (안해도되는듯..)) as expression query 
+
+뷰의 갱신.
+왠만하면 하지말고, 특정 제약조건에 만족하면 하세요.
+1. from절의 단 1개의 릴레이션 (근데 애당초 1개 릴레이션이면 굳이 갱신안함...) 
+2. select절은 오직 릴레이션의 속성이름(연산같은 표현 xx)
+3. 해당속성들 not null or primary 이면 안됨.
+4. group by having절이 있으면 안됨.
+그런데도 뷰의 조건이 만족하지 않으면 해당 뷰 조건을 만든 테이블엔 삽입이되나 뷰에는 안나타남 ㅇㅇ
+
+
+3) 트랜잭션
+커밋워크, 롤백 워크 <-롤백!!
+save지점을 찍고 롤백이냐 커밋이냐에 따라서 행동이 달라짐
+
+
+4) 무결성제약조건들.
+주어진 사용자로부터의 데이터베이스 변경이 데이터 일관성에 손실을 초래하지 않음을 보장하는데 이용함. <- 무결성제약조건은 갑작스러운 손상으로부터 디비 보호
+
+1. not null 2. unique (ms x) 3. check절 :  check(semester in('Fall','Winter','Spring...)) 이런식으로 체크.. 없으면 에러.
+4. 외부키 foreign key를 이용
+foreign key ( attribute) references table 즉 table에 있는 해당 속성이 존재해야 무결성 제약조건이 만족한다라는 뜻.
+
+course foreign key(dept_name) references department on delete cascade on update cascade 
+이것은 해당 department의 dept_name이 존재해야하며 만약 department 투플이 삭제및 업데이트 되면 해당 그 투플을 가진 course 투플삭제및업데이트
+
+추가적인 내장 데이터 타입
+date, time, timestamp
+case e as t와 같은 형태는 문자열 e를 타입 위에있는 3개 중 하나 선택해 결정.
+그리고 정의시 default를 넣어서 해당 데이터가 안들어오면 디폴트 값을 넣음
+
+인덱스-
+릴레이션의 속성에 대한 인덱스는 배열형태의 자료구조를 인용하여 투플을 즉시 찾을수 있게함..
+create index studentID_index on student(ID)
+
+대형객체타입
+name clob(10kb) image blob(2mb) movie blob(2GB)
+
+사용자 정의타입
+create type newTypeName as <type>  final/not null 을 만들고 적용가능!
+cast로 도메인 타입변환
+
+그럼 도메인타입이란?
+create domain .. 이하 동문
+도메인은 not null과 같은 제약조건을 가질수 있으나 사용자 정의타입은 불가함
+도메인은 강력한 타입은 아니다. 자만 check 절을 통해 제약을 거는건 가능하다.
+create domain YearlySalary numeric(p,g) constraint salary_value_test check(value >=29000 ) or check (value in (' ' 't1'))가능함 즉 해당 도메인만드는 이름 옆은 check에서 넣을수 있는 타입 이름.
+
+create table 확장
+create table tableName like existing_table : 현재존재하는 테이블과 같은 스키마의 테이블생성.
+또한 with date;를 create table t1 as,,, 을 만들고 난 뒤에 붙일수 있는데  테이블은 생성되나 데이터못넣음 ㅇㅇ
+
+스키마/카탈로그/환경
+
+
+5) 권한
+CRUD 권한부여
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

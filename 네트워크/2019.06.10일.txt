@@ -1,0 +1,7 @@
+MYSQL)
+SELECT DISTINCT SALARY AS SecondHightestSalary
+FROM Employee ORDER BY SALARY DESC LIMIT 1 OFFSET 1 의 의미는 OFFSET은 1다음 2부터 LIMIT개의 개수를 내림차순으로 갖고온다.
+
+알고리즘 3문제 품. 
+
+운영체제 공부

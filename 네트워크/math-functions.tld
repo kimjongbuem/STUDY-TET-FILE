@@ -3,7 +3,7 @@
 	<short-name>math</short-name>
 	<function>
 		<name>squareroot</name>
-		<function-class>java.lang.math</function-class>
+		<function-class>java.lang.Math</function-class>
 		<function-signature>double sqrt(double)</function-signature>
-	</fuction>
+	</function>
 </taglib>
