@@ -1,5 +1,6 @@
 8강 관계형 데이터베이스
 정규화 : 분해하여 쪼개자. 한개의 테이블에 한개의 주제만 담자. 
+데이터베이스 정규화란 데이터베이스의 설계를 재구성하는 테크닉입니다. 정규화를 통해 불필요한 데이터(redundancy)를 없앨 수 있고, 삽입/갱신/삭제 시 발생할 수 있는 각종 이상현상(Anamolies)들을 방지할 수 있습니다. 
 ISP/BPR -> DATA modeing -> ER Modeling -> ER Diagram -> 후보들 Relational DB -> [Normalization -> Normalized Table -> DeNormalization ->최종테이블] -> 이 강에서 할것.
 > 전에는 5강에서는 최종테이블 -> SampleData -> App pgm -> Testing -> 실 DB -> 정보시스템 배움.
 정규화 -> insert, delete, update, anormory  한개의 row에는 중복되는게 없어야한다. 중복이 있다면 유지보수 문제, 해당 속성의 추가/삭제문제 등..
@@ -24,7 +25,6 @@ key a , b, c가 r(a~e)결정시 a,b,c-> r  ok!!! 이 테이블은 후보키얌!
 결정자 id, 결정자 reference -> BCNF 
 추론과 결과 , 인의적인 상호종속성 파악과 유추 -> F+ closure 폐포 ==> 주어진 집합 f로부터 추론될 수 있는 모든 함수 종속의 집합을 의미함. 
 자명(trivial) : 일반적으로 a -> b , b<= a 
-
 
 3NF. 슈퍼키가 아니여도 상관없음.
 이행적 함수 종속이 없는 것 입니다. 풀어서 말하자면, 기본키 이외의 다른 컬럼이 그외 다른 컬럼을 결정할 수 없는 것입니다. 
