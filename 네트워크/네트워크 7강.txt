@@ -71,8 +71,8 @@
 
 ip헤더구조)
 ver headerlength ds ecn packetlength
-identification , flagbit(mf, df)
-time to live transport headchecksum fragmentOffset
+identification , flagbit(mf, df) fragmentOffset
+time to live transport headchecksum 
 s /d / padding,option 각 32바이트
 DS/ECN : 다양한 서비스 개념을 제공하기위해서 정의(서비스 등급 차이 구성)
 패킷분할 - 

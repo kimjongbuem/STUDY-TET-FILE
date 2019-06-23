@@ -1,0 +1,33 @@
+일단 index.jsp에서 container, form-group row pull-right , form-control , 이런 부트스트랩 클래스 이용.
+그럼 디비서버에서 데이터를 가져오는 서블릿을구현할건데,
+Get / Post 방식 해당 입력값이 노출이 되냐마냐의 차이,.... 
+response.getWriter()// 출력스트림을 생성하고 .write(getJson데이터를) 적을거임  
+그럼 json에대해서 tcpSchool.com에서 알아보자.
+
+json은 자바스크립트 객체 표기법임. (사람이 쉽게 읽을 수 있게 텍스트 기반의 데이터 교환 표준)
+1. 자바스크립트 확장 2. 자바스크립트 객체 표기법 3. r/w 용이 4. 프로그래밍언어와 os에 독립적.
+XML 과의 차이점은 무엇인가?
+XML은 태그를 사용하며 구문이 JSON보다 길다 또, 배열을 사용가능하며 
+XML은 XML 파서로 파싱 ,,,, JSON은 자바스크립트 표준함수인 eval함수로 파싱
+
+객체  == > 객체안의 객체가 있을수도...
+{ String : value , ... }
+
+JSON.stringify() 메소드는 인수로 전달받은 자바스크립트 객체를 문자열
+JSON.parse() 메소드는 JSON.stringify() 메소드와는 반대로 인수로 전달받은 문자열을 자바스크립트 객체로 변환하여 반환합니다.
+eval 메서도도 객체로 변환한다!!
+배열
+
+"dog" : [ {"String":"value" ,, } , { string : value} ] 
+{"result" :[ [{"value" : "....."}, {"value" : "....."},{"value" : "....."}], [ .. ] ]} //이런식으로 jsp 이중배열
+eval obj=> obj.result[1].value 이런식.. 
+obj.result = > result.length / result[i].length 
+table
+insertRow insertCell 
+
+encodeURIComponent>>
+요약(Summary)
+URI로 데이터를 전달하기 위해서 문자열을 인코딩
+
+문법(Syntax)
+encodeURIComponent(string)
